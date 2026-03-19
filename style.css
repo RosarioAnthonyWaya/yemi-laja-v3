@@ -5,15 +5,40 @@
 
 /* ── COLOUR & TYPOGRAPHY VARIABLES ── */
 :root {
-  /* Brand Colours — edit these to restyle the whole site */
+  /* ── BRAND COLOURS — edit here to restyle the whole site ── */
+
+  /* Gold accent (unchanged — brand anchor) */
   --gold:        #C9A84C;
   --gold-light:  #E8C97A;
-  --cream:       #F5F0E8;
-  --charcoal:    #1A1A1A;
-  --deep:        #0D0D0D;
-  --mid:         #2E2E2E;
-  --muted:       #888888;
-  --border:      rgba(201, 168, 76, 0.25);
+
+  /* Light backgrounds */
+  --white:       #FFFFFF;
+  --linen:       #FAF8F4;
+  --ivory:       #F2EDE4;
+  --stone:       #E8E0D4;
+
+  /* Dark backgrounds (hero, footer, cta, nav) */
+  --ink:         #1C1C1C;
+  --navy:        #2C3E50;
+  --warm-dark:   #3A3530;
+
+  /* Accent colours */
+  --burgundy:    #7B3B3B;
+  --sage:        #7A8C7E;
+
+  /* Typography */
+  --text-dark:   #1C1C1C;
+  --text-body:   #3D3530;
+  --text-muted:  #6B6560;
+  --text-light:  #FAF8F4;
+
+  /* Aliases kept for backward compat with existing HTML */
+  --deep:        #1C1C1C;
+  --charcoal:    #FAF8F4;
+  --mid:         #F2EDE4;
+  --cream:       #1C1C1C;
+  --muted:       #6B6560;
+  --border:      rgba(61, 53, 48, 0.15);
 }
 
 /* ── RESET ── */
@@ -22,8 +47,8 @@
 }
 html { scroll-behavior: smooth; }
 body {
-  background: var(--deep);
-  color: var(--cream);
+  background: var(--white);
+  color: var(--text-dark);
   font-family: 'Barlow', sans-serif;
   font-weight: 300;
   overflow-x: hidden;
@@ -34,7 +59,7 @@ nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
   padding: 1.4rem 4rem;
-  background: rgba(13,13,13,0.9);
+  background: rgba(28,28,28,0.96);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   transition: padding 0.3s;
@@ -42,7 +67,7 @@ nav {
 .nav-logo {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.5rem; font-weight: 600;
-  color: var(--cream); text-decoration: none;
+  color: var(--text-light); text-decoration: none;
   letter-spacing: 0.04em;
 }
 .nav-logo span { color: var(--gold); }
@@ -50,8 +75,8 @@ nav {
 .nav-links a {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--cream); text-decoration: none;
-  opacity: 0.75; transition: opacity 0.2s, color 0.2s;
+  color: var(--text-light); text-decoration: none;
+  opacity: 0.8; transition: opacity 0.2s, color 0.2s;
 }
 .nav-links a:hover,
 .nav-links a.active { opacity: 1; color: var(--gold); }
@@ -69,7 +94,7 @@ nav {
 /* Mobile Nav */
 .mobile-nav {
   position: fixed; inset: 0; z-index: 200;
-  background: var(--charcoal);
+  background: var(--ink);
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   gap: 2rem;
@@ -80,7 +105,7 @@ nav {
 .mobile-nav a {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2.5rem; font-weight: 300;
-  color: var(--cream); text-decoration: none;
+  color: var(--text-light); text-decoration: none;
   transition: color 0.2s;
 }
 .mobile-nav a:hover { color: var(--gold); }
@@ -93,7 +118,7 @@ nav {
 /* ── PAGE HERO (inner pages) ── */
 .page-hero {
   padding: 12rem 4rem 6rem;
-  background: var(--charcoal);
+  background: var(--ink);
   position: relative; overflow: hidden;
 }
 .page-hero-tag {
@@ -105,11 +130,12 @@ nav {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(3rem, 6vw, 5.5rem);
   font-weight: 300; line-height: 1.05;
+  color: var(--text-dark);
 }
 .page-hero-title em { font-style: italic; color: var(--gold); }
 .page-hero-sub {
   font-size: 1rem; line-height: 1.8;
-  color: rgba(245,240,232,0.65);
+  color: var(--text-muted);
   max-width: 500px; margin-top: 1.5rem;
 }
 
@@ -128,6 +154,7 @@ section { padding: 7rem 4rem; }
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2.2rem, 4vw, 3.8rem);
   font-weight: 300; line-height: 1.1;
+  color: var(--text-dark);
 }
 .section-heading em { font-style: italic; color: var(--gold); }
 
@@ -143,7 +170,7 @@ section { padding: 7rem 4rem; }
 .btn-outline {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--cream); border: 1px solid rgba(245,240,232,0.35);
+  color: var(--text-dark); border: 1px solid rgba(61,53,48,0.35);
   padding: 0.9rem 2.2rem; text-decoration: none;
   transition: border-color 0.2s, color 0.2s; display: inline-block;
 }
@@ -151,33 +178,34 @@ section { padding: 7rem 4rem; }
 .btn-dark {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--cream); background: var(--deep);
+  color: var(--ink); background: var(--gold);
   padding: 1rem 2.5rem; text-decoration: none;
   transition: background 0.2s; display: inline-block;
   white-space: nowrap;
 }
-.btn-dark:hover { background: var(--mid); }
+.btn-dark:hover { background: var(--gold-light); }
 
 /* ── CTA BANNER ── */
 #cta-banner {
-  background: var(--gold);
+  background: var(--ink);
   padding: 5rem 4rem;
   display: flex; justify-content: space-between; align-items: center;
+  border-top: 3px solid var(--gold);
 }
 .cta-banner-tag {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
-  color: rgba(13,13,13,0.6); margin-bottom: 0.8rem;
+  color: var(--gold); margin-bottom: 0.8rem;
 }
 .cta-banner-heading {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 400; color: var(--deep); line-height: 1.05;
+  font-weight: 400; color: var(--text-light); line-height: 1.05;
 }
 
 /* ── FOOTER ── */
 footer {
-  background: var(--charcoal);
+  background: var(--ink);
   padding: 4rem 4rem 2rem;
   border-top: 1px solid var(--border);
 }
@@ -189,16 +217,16 @@ footer {
 .footer-brand-name {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2rem; font-weight: 300;
-  margin-bottom: 1rem; color: var(--cream);
+  margin-bottom: 1rem; color: var(--text-light);
 }
 .footer-brand-name span { color: var(--gold); }
-.footer-tagline { font-size: 0.88rem; line-height: 1.75; color: var(--muted); margin-bottom: 1.5rem; }
+.footer-tagline { font-size: 0.88rem; line-height: 1.75; color: rgba(250,248,244,0.6); margin-bottom: 1.5rem; }
 .footer-socials { display: flex; gap: 0.8rem; }
 .footer-social-link {
   width: 36px; height: 36px;
   border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center;
-  color: var(--muted); text-decoration: none;
+  color: rgba(250,248,244,0.55); text-decoration: none;
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
   transition: border-color 0.2s, color 0.2s;
@@ -214,12 +242,12 @@ footer {
 .footer-links a { font-size: 0.88rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
 .footer-links a:hover { color: var(--cream); }
 .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
-.footer-legal { font-size: 0.8rem; color: rgba(136,136,136,0.6); }
-.footer-legal strong { color: var(--muted); font-weight: 400; }
+.footer-legal { font-size: 0.8rem; color: rgba(250,248,244,0.4); }
+.footer-legal strong { color: rgba(250,248,244,0.6); font-weight: 400; }
 .footer-mastercraft {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
-  color: rgba(136,136,136,0.5);
+  color: rgba(250,248,244,0.35);
 }
 
 /* Simple footer variant (used on inner pages) */
@@ -233,7 +261,7 @@ footer.simple {
 .footer-nav a {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--muted); text-decoration: none;
+  color: rgba(250,248,244,0.55); text-decoration: none;
 }
 .footer-nav a:hover { color: var(--gold); }
 
